@@ -1,10 +1,14 @@
-import { Bot } from "grammy";
+import { Bot, InlineKeyboard } from "grammy";
 
 const bot = new Bot("7856183475:AAF6lW9IG9zPTiM-7z3cuDMS8kufZmE4pok");
 
-
 bot.command('start', ctx => {
-    ctx.reply('Salom.\nMeni guruhga admin qiling\nva men kirdi chiqdini tozalab turaman')
+    ctx.reply(`Assalomu alaykum ${ctx.from.first_name}\nMeni o'z guruhingizga qo'shing va men \nkirdi va chiqdini tozalab turaman 👍🏻.`, {
+        reply_markup: new InlineKeyboard().url(
+            "Guruhga qo'shish",
+            `https://t.me/${ctx.me.username}?startgroup=true`
+        )
+    })
 })
 
 bot.on("message:new_chat_members", async (ctx) => {
